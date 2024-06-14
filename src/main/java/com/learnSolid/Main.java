@@ -3,6 +3,10 @@ package com.learnSolid;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.DependencyInversionPrinciple.ManagePay;
+import com.DependencyInversionPrinciple.PayMent;
+import com.DependencyInversionPrinciple.payOffline;
+import com.DependencyInversionPrinciple.payOnline;
 import com.LiskovSubstitutionPrinciple.BookFileFree;
 import com.LiskovSubstitutionPrinciple.BookFileOptions;
 import com.LiskovSubstitutionPrinciple.BookFilePayFee;
@@ -34,6 +38,14 @@ public class Main {
         System.out.println(bfo.add(new BookFilePayFee()));
 
         // Interface Segregation Principle
+        PayMent payMentOffline = new payOffline(1, 11.0, "true");
+        PayMent payMentOnline = new payOnline(2, 11.0, "true", "MBBank");
 
+        ManagePay managePay = new ManagePay();
+        managePay.setPayMent(payMentOffline);
+        System.out.println(managePay.pricePay() + "" + managePay.statusPayString());
+
+        managePay.setPayMent(payMentOnline);
+        System.out.println(managePay.pricePay() + "" + managePay.statusPayString());
     }
 }
