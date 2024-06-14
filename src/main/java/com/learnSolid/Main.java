@@ -33,6 +33,7 @@ public class Main {
         System.out.println(bfo.add(new BookFileFree()));
         System.out.println(bfo.add(new BookFilePayFee()));
 
-        //
+        // Interface Segregation Principle
+
     }
 }
